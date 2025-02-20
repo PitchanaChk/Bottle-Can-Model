@@ -6,19 +6,18 @@ from io import BytesIO
 
 app = Flask(__name__)
 
-model_size = tf.keras.models.load_model('model/size_model.h5') 
-model_brand = tf.keras.models.load_model('model/brand_model.h5')  
+model_size = tf.keras.models.load_model('/Users/jjnotinotp/Downloads/model_size_brand/bottle_size_model.h5') 
+model_brand = tf.keras.models.load_model('/Users/jjnotinotp/Downloads/model_size_brand/bottle_brand_model.h5')  
 
-size_classes = ['bottle_1250ml', 'bottle_2000ml', 'bottle_330ml', 'bottle_345ml', 'bottle_350ml', 
-                'bottle_380ml', 'bottle_450ml', 'bottle_500ml', 'bottle_590ml', 'can'] 
-brand_classes = ['7-11', 'aura', 'coke', 'fanta', 'gatorade', 'mirinda', 'oishi']  
+size_classes = ['bottel_1600', 'bottel_350', 'bottle_1250', 'bottle_1500', 'bottle_1950', 'bottle_280', 'bottle_300', 'bottle_320', 'bottle_322', 'bottle_340', 'bottle_360', 'bottle_400', 'bottle_410', 'bottle_430', 'bottle_440', 'bottle_445', 'bottle_500', 'bottle_600ml', 'bottle_640', 'bottle_750'] 
+brand_classes = ['amphawa', 'amwelplus', 'aquafina', 'beauti_drink', 'big', 'coca_cola', 'cocomax', 'crystal', 'est', 'ichitan', 'kato', 'mansome', 'mikko', 'minearlwater', 'nestle', 'no_band', 'oishi', 'pepsi', 'sing', 'spinking_water', 'sprite', 'srithep', 'tipchumporn_drinking_water'] 
 
 
-CONFIDENCE_THRESHOLD = 0.8
+CONFIDENCE_THRESHOLD = 0.5
 
 def preprocess_image(image_bytes):
     image = Image.open(BytesIO(image_bytes))
-    image = image.resize((224, 224))  
+    image = image.resize((256, 144))  
     image = np.array(image) / 255.0  
     image = np.expand_dims(image, axis=0)  
     return image
@@ -48,8 +47,8 @@ def predict():
         brand_name = brand_classes[brand_index] if brand_confidence >= CONFIDENCE_THRESHOLD else "unknown"
 
         return jsonify({
-            "size": size_name,  
-            "brand": brand_name  
+            "bottle_size": size_name,  
+            "bottle_brand": brand_name  
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
