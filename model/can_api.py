@@ -6,8 +6,8 @@ from io import BytesIO
 
 app = Flask(__name__)
 
-model_size = tf.keras.models.load_model('/Users/jjnotinotp/Downloads/model_size_brand/can_size_model.h5') 
-model_brand = tf.keras.models.load_model('/Users/jjnotinotp/Downloads/model_size_brand/can_brand_model.h5')  
+model_size = tf.keras.models.load_model('model/can_size_model.h5') 
+model_brand = tf.keras.models.load_model('model/can_brand_model.h5')  
 
 size_classes = ['can_180', 'can_245', 'can_330', 'can_490'] 
 brand_classes = ['birdy', 'calpis_lacto', 'chang', 'green_mate', 'leo', 'nescafe', 'sing'] 
