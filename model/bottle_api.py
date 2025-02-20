@@ -6,8 +6,8 @@ from io import BytesIO
 
 app = Flask(__name__)
 
-model_size = tf.keras.models.load_model('/Users/jjnotinotp/Downloads/model_size_brand/bottle_size_model.h5') 
-model_brand = tf.keras.models.load_model('/Users/jjnotinotp/Downloads/model_size_brand/bottle_brand_model.h5')  
+model_size = tf.keras.models.load_model('model/bottle_size_model.h5') 
+model_brand = tf.keras.models.load_model('model/bottle_brand_model.h5')  
 
 size_classes = ['bottel_1600', 'bottel_350', 'bottle_1250', 'bottle_1500', 'bottle_1950', 'bottle_280', 'bottle_300', 'bottle_320', 'bottle_322', 'bottle_340', 'bottle_360', 'bottle_400', 'bottle_410', 'bottle_430', 'bottle_440', 'bottle_445', 'bottle_500', 'bottle_600ml', 'bottle_640', 'bottle_750'] 
 brand_classes = ['amphawa', 'amwelplus', 'aquafina', 'beauti_drink', 'big', 'coca_cola', 'cocomax', 'crystal', 'est', 'ichitan', 'kato', 'mansome', 'mikko', 'minearlwater', 'nestle', 'no_band', 'oishi', 'pepsi', 'sing', 'spinking_water', 'sprite', 'srithep', 'tipchumporn_drinking_water'] 
